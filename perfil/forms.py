@@ -8,18 +8,39 @@ class PerfilForm(forms.ModelForm):
         model = models.Perfil
         fields = '__all__'
         exclude = ('usuario',)
+        widgets = {
+            'data_nascimento': forms.DateInput(
+                attrs={
+                    'type': 'date',
+                    'class': 'form-control',
+                }
+            ),
+            'cpf': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '000.000.000-00',
+                'data-mask': '000.000.000-00',  # para usar com JS
+            }),
+        }
 
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(
         required=False,
-        widget=forms.PasswordInput(),
+        widget=forms.PasswordInput(attrs={
+            'autocomplete': 'new-password',
+            'class': 'form-control',
+            'placeholder': 'Digite uma nova senha (opcional)',
+        }),
         label='Senha',
     )
 
     password2 = forms.CharField(
         required=False,
-        widget=forms.PasswordInput(),
+        widget=forms.PasswordInput(attrs={
+            'autocomplete': 'new-password',
+            'class': 'form-control',
+            'placeholder': 'Confirme a nova senha',
+        }),
         label='Confirmação senha'
     )
 
