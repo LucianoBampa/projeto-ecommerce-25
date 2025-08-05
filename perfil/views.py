@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView
 from django.views import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -136,7 +135,6 @@ class Criar(BasePerfil):
         )
 
         return redirect('produto:carrinho')
-        return self.renderizar
 
 
 class Atualizar(View):
@@ -150,16 +148,6 @@ class Login(View):
         password = self.request.POST.get('password')
 
         if not username or not password:
-            messages.error(
-                self.request,
-                'Usuário ou senha inválidos.'
-            )
-            return redirect('perfil:criar')
-
-        usuario = authenticate(
-            self.request, username=username, password=password)
-
-        if not usuario:
             messages.error(
                 self.request,
                 'Usuário ou senha inválidos.'
