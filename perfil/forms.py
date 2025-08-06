@@ -15,32 +15,19 @@ class PerfilForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'cpf': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': '000.000.000-00',
-                'data-mask': '000.000.000-00',  # para usar com JS
-            }),
         }
 
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(
         required=False,
-        widget=forms.PasswordInput(attrs={
-            'autocomplete': 'new-password',
-            'class': 'form-control',
-            'placeholder': 'Digite uma nova senha (opcional)',
-        }),
+        widget=forms.PasswordInput(),
         label='Senha',
     )
 
     password2 = forms.CharField(
         required=False,
-        widget=forms.PasswordInput(attrs={
-            'autocomplete': 'new-password',
-            'class': 'form-control',
-            'placeholder': 'Confirme a nova senha',
-        }),
+        widget=forms.PasswordInput(),
         label='Confirmação senha'
     )
 

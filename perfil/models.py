@@ -11,7 +11,7 @@ class Perfil(models.Model):
                                    verbose_name='Usuário')
     idade = models.PositiveIntegerField()
     data_nascimento = models.DateField()
-    cpf = models.CharField(max_length=14, unique=True)
+    cpf = models.CharField(max_length=14)
     endereco = models.CharField(max_length=50)
     numero = models.CharField(max_length=5)
     complemento = models.CharField(max_length=30)
